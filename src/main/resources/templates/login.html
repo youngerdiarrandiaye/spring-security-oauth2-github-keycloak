@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.js"></script>
+    <script src="/webjars/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.10.3/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .card.login-card {
+            margin-top: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .card.login-card .card-header {
+            background-color: #073c91;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card.login-card .btn {
+            margin-right: 10px;
+        }
+
+        .card.login-card form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .card.login-card .form-check {
+            margin-top: 10px;
+        }
+
+        .card.login-card .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .card.login-card .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .card.login-card .btn-outline-dark {
+            border-color: #343a40;
+        }
+
+        .card.login-card .btn-outline-dark:hover {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .card.login-card .btn-outline-primary {
+            border-color: #007bff;
+            color: #007bff;
+        }
+
+        .card.login-card .btn-outline-primary:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div class="class row mt-3">
+    <div class="col-md-6 offset-3">
+
+        <div class="class card login-card">
+            <div class="card-header" style="background-color: #073c91;color:white;">Authentification</div>
+            <div class="card-body">
+                <a class="btn btn-outline-dark" th:href="@{oauth2/authorization/github}">
+                    <span class="bi bi-github" style="font-size: 1.25em"></span>GitHub
+                </a>
+                <a class="btn btn-outline-primary" th:href="@{oauth2/authorization/google}">
+                    <span class="bi bi-google" style="font-size: 1.25em"></span>Google
+                </a>
+                <a class="btn btn-outline-primary" th:href="@{oauth2/authorization/keycloak}" style="background-color: #0072ce; color: #ffffff;">
+                    <span class="bi bi-key" style="font-size: 1.25em"></span>keycloak
+                </a>
+
+                <form th:action="@{/login}" method="post" class="mt-4">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-check mb-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="remember-me" class="form-check-input">Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
